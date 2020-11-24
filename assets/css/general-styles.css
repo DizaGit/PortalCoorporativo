@@ -1,0 +1,18 @@
+.jd-primary-color {	
+	color: #008bb4;
+}
+.jd-primary-bcolor {
+	background-color: #008bb4;
+	color: white;
+}
+.jd-list {
+	list-style:disc;
+	color: #008bb4;
+	margin-left: 40px;
+}
+.jd-w-70 {
+	width: 70%;
+}
+.jd-sub-title {
+	font-size: 19px;
+}
