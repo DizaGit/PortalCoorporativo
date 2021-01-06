@@ -35,6 +35,12 @@
 	width: 100%;
 	min-height: 300px;
 }
+.jd-color {color: #6a2e6d;}
+
+.jd-img-bar {	
+	height: 3rem;
+	width: 100%;
+}
 #enviado {
 	padding: 20px;
 	background-color: #deefd5;
