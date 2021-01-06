@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "_Layout2";
+}
+<div class="full-row page-banner-image" style="background-image: url(images/banners/b_abstract02.jpg); background-position: center center; background-size: cover">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <span class="text-white text-center mt-4 sub-title jd-sub-title jd-w-70 w-sm-100 mx-auto">Manejamos tres modelos de precios basados en los alcances, los tiempos, los recursos involucrados y las especificaciones de cada proyecto.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- breadcrumb -->
+<div class="full-row breadcrumb-bar bg-gray py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <h3>Modelos de precio</h3>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav aria-label="breadcrumb" class="float-right">
+                    <ol class="breadcrumb mb-0 bg-transparent p-0">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" asp-fragment="jdmodelos">Modelos de trabajo</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Modelos de precios</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb -->
+
+
+<div class="full-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <i class="fal fa-file-invoice-dollar flat-medium text-primary mb-4"></i>
+                        <h3 class="down-line mb-4">Fixed Price</h3>
+                        <p>Se fija un presupuesto antes de empezar el proyecto; las funcionalidades del desarrollo se acotan al requerimiento inicial. Se recomienda para proyectos cortos en los que el desarrollo tiene alcances específicos desde el comienzo.</p>
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <i class="fal fa-user-clock flat-medium text-primary mb-4"></i>
+                        <h3 class="down-line mb-4">Time and Material</h3>
+                        <p>Se cobra por las horas de trabajo de un especialista o por el tiempo de cada una de las tareas que intervienen en el proyecto (casos de uso, pruebas, etc.). Hay flexibilidad para modificar los alcances o agregar requerimientos. Se recomienda para proyectos largos en los que es complicado estimar los tiempos de implementación o en los que las funcionalidades no están totalmente definidas desde el inicio.</p>
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <i class="fal fa-calendar-alt flat-medium text-primary mb-4"></i>
+                        <h3 class="down-line mb-4">Monthly Retainer</h3>
+                        <p>Es ideal para los proyectos en los que se compran mensualmente las horas de trabajo de un especialista o un equipo por adelantado, ya que el costo por hora es menor al regular. Con este price model, el cliente asegura que la disponibilidad del o de los profesionales a su servicio esté garantizada para atender con prioridad sus requerimientos. Se recomienda para proyectos largos o para establecer relaciones comerciales duraderas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar page-sidebar">
+                    <div class="widget widget-email bg-gray">
+                        <h4 class="widget-title mb-3">Escríbenos</h4>
+                        <span>Envía un mensaje a nuestros expertos para obtener una asesoría o más detalles acerca de nuestros servicios o alguno de nuestros productos.<br /></span>
+                        <form action="#" method="post" class="mt-3">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control bg-white" placeholder="Nombre" value="" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control bg-white" placeholder="Correo electrónico" value="" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control bg-white" placeholder="Título" value="" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control bg-white" rows="5" placeholder="Mensaje"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
