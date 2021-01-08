@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>46aaca5f-8a39-483a-b699-601a1f296d8c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="JDInvoiceManager.Helper">
+      <HintPath>dll\JDInvoiceManager.Helper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
