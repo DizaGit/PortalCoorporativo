@@ -28,5 +28,10 @@ namespace JDSolutionsPOC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [Route("/HandleError/{code:int}")]
+        public IActionResult CustomError(int code)
+        {
+            return View();
+        }
     }
 }

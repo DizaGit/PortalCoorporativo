@@ -1,0 +1,84 @@
+﻿@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>¡Ups! Error 404</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="@Url.Content("~/assets/images/favicon.png")">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&display=swap" rel="stylesheet">
+    <!--  CSS Style -->
+    <environment include="Development">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/general-styles.css")">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-fallback-href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css"
+              asp-fallback-test-class="animated"
+              asp-fallback-test-property="animation-fill-mode"
+              asp-fallback-test-value="both"
+              asp-fallback-href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+              asp-fallback-test-class="owl-item"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="relative"
+              asp-fallback-href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+              asp-fallback-test-class="fancybox-active"
+              asp-fallback-test-property="height"
+              asp-fallback-test-value="auto"
+              asp-fallback-href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.min.css")">
+    </environment>
+</head>
+<body class="bg-light">
+    <!--body code goes here-->
+    <div class="container-fluid jd-img-bar bg-secondary">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-10 offset-md-1 mt-5">
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <img src="@Url.Content("~/images/404/error404.svg")" width="55%" alt="">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <h3><i class="fas fa-exclamation-triangle color mb-3"></i>&nbsp;&nbsp;<b>P&aacute;gina no encontrada</b></h3>
+                        <h4><small>&iexcl;Lo sentimos! Esta p&aacute;gina no est&aacute; disponible. </small></h4>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary btn-small"><i class="fal fa-long-arrow-left"></i> &nbsp;Volver al incio </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
