@@ -167,18 +167,30 @@
 	
 	// Auto active class adding with navigation
     $window.on('load', function () {
-        var current = location.pathname;
-        var $path = current.substring(current.lastIndexOf('/') + 1);
-        $('#navbarSupportedContent li a').each(function (e) {
-            var $this = $(this);
-            // if the current path is like this link, make it active
-            if ($path == $this.attr('href')) {
-                $this.parent('li').addClass('active');
-            } 
-			else if ($path == '') {
-                $('.navbar-nav li:first-child').addClass('active');
-            }
-        })
+        const current = location.pathname;
+		//var $path = current.substring(current.lastIndexOf('/') + 1);
+		if (current.includes('servicios')) {
+			$("#liServices").addClass('active');
+		}
+		else if (current.includes('modelosdetrabajo')) {
+			$("#liModels").addClass('active');
+		}
+		else if (current.includes('productos')) {
+			$("#liProducts").addClass('active');
+		}
+		else if (current.includes('nosotros')) {
+			$("#liUs").addClass('active');
+		}
+   //     $('#navbarSupportedContent li a').each(function (e) {
+   //         var $this = $(this);
+   //         // if the current path is like this link, make it active
+   ////         if ($path == $this.attr('href')) {
+   ////             $this.parent('li').addClass('active');
+   ////         } 
+			////else if ($path == '') {
+   ////             $('.navbar-nav li:first-child').addClass('active');
+   ////         }
+   //     })
     });
 
 	

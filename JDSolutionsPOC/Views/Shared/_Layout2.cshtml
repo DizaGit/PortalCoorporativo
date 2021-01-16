@@ -79,51 +79,28 @@
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item dropdown">
+                                    <li id="liServices" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdservicios">Servicios</a>
                                         <ul class="dropdown-menu">
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Aplicaciones de negocio</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "aplicaciones-de-negocio"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Integración de sistemas</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "integracion-de-sistemas"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Advanced Tech</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "advanced-tech"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Servicios profesionales</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "servicios-profesionales"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
+                                            @foreach (var group in services.Value.Services.GroupBy(s => s.groupid))
+                                            {
+                                                string groupName = group.First().group;
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle dropdown-item" asp-controller="Services" asp-action="GroupBy" asp-route-groupId="@group.Key">@groupName</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach (Service service in group)
+                                                        {
+                                                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
                                         </ul>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li id="liModels" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdmodelos">Modelos de trabajo</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li id="liProducts" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproductos">Productos</a>
                                         <ul class="dropdown-menu">
                                             <li class="dropdown">
@@ -134,10 +111,10 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="nav-item dropdown mega-dropdown">
+                                    <li id="liProjects" class="nav-item dropdown mega-dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproyectos">Proyectos</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li id="liUs" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="AboutUs" asp-action="Index">Nosotros</a>
                                     </li>
                                 </ul>
