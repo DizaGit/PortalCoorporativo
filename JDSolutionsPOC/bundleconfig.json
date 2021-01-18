@@ -1,0 +1,22 @@
+[
+  {
+    "outputFileName": "wwwroot/assets/css/style.min.css",
+    "inputFiles": [
+      "wwwroot/assets/css/general-styles.css",
+      //"wwwroot/assets/css/layerslider.css",
+      "wwwroot/assets/css/style.css",
+      //"wwwroot/assets/css/template.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/assets/js/custom.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/custom.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

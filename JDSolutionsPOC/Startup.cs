@@ -51,6 +51,7 @@ namespace JDSolutionsPOC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseStatusCodePagesWithReExecute("/HandleError/{0}");
             app.UseStaticFiles();
 
             app.UseRouting();

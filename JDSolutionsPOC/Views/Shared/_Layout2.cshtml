@@ -22,17 +22,48 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&display=swap" rel="stylesheet">
 
     <!--  CSS Style -->
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/animate.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/owl.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/general-styles.css")">
+    <environment include="Development">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/general-styles.css")">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-fallback-href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css"
+              asp-fallback-test-class="animated"
+              asp-fallback-test-property="animation-fill-mode"
+              asp-fallback-test-value="both"
+              asp-fallback-href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+              asp-fallback-test-class="owl-item"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="relative"
+              asp-fallback-href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+              asp-fallback-test-class="fancybox-active"
+              asp-fallback-test-property="height"
+              asp-fallback-test-value="auto"
+              asp-fallback-href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.min.css")">
+    </environment>
 </head>
 <body>
     <header class="transparent-header nav-on-banner">
@@ -48,65 +79,42 @@
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" asp-controller="Services" asp-action="Index">Servicios</a>
+                                    <li id="liServices" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdservicios">Servicios</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var group in services.Value.Services.GroupBy(s => s.groupid))
+                                            {
+                                                string groupName = group.First().group;
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle dropdown-item" asp-controller="Services" asp-action="GroupBy" asp-route-groupId="@group.Key">@groupName</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach (Service service in group)
+                                                        {
+                                                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li id="liModels" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdmodelos">Modelos de trabajo</a>
+                                    </li>
+                                    <li id="liProducts" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproductos">Productos</a>
                                         <ul class="dropdown-menu">
                                             <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Aplicaciones de negocio</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "aplicaciones-de-negocio"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
+                                                <a class="dropdown-item" asp-controller="Products" asp-action="BlueHouse">BLUE House</a>
                                             </li>
                                             <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Integración de sistemas</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "integracion-de-sistemas"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Advanced Tech</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "advanced-tech"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" href="#">Servicios profesionales</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach (Service service in services.Value.Services.Where(s => s.groupid == "servicios-profesionales"))
-                                                    {
-                                                        <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
-                                                    }
-                                                </ul>
+                                                <a class="dropdown-item" asp-controller="Products" asp-action="PACFE">PACFE</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" asp-controller="Pricing" asp-action="Index">Modelos de trabajo</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#">Productos</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" asp-controller="Products" asp-action="BlueHouse">Blue House</a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item" asp-controller="Products" asp-action="PACFE">Pacfe</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown mega-dropdown">
+                                    <li id="liProjects" class="nav-item dropdown mega-dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproyectos">Proyectos</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li id="liUs" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="AboutUs" asp-action="Index">Nosotros</a>
                                     </li>
                                 </ul>
@@ -199,18 +207,49 @@
     <a href="#" class="bg-primary text-white" id="scroll"><i class="fa fa-angle-up"></i></a>
     <!-- End Scroll To top -->
     <!--===============================================================================================-->
-    <script src="@Url.Content("~/assets/js/jquery.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/greensock.js")"></script>
-    <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
-    <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
-    <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/owl.js")"></script>
-    <script src="@Url.Content("~/assets/js/wow.js")"></script>
-    <script src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/validate.js")"></script>
-    <script src="@Url.Content("~/assets/js/custom.js")"></script>
+    <environment include="Development">
+        <script src="@Url.Content("~/assets/js/jquery.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/greensock.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
+        <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/owl.js")"></script>
+        <script src="@Url.Content("~/assets/js/wow.js")"></script>
+        <script src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/validate.js")"></script>
+        <script src="@Url.Content("~/assets/js/custom.js")"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/jquery.min.js")"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="@Url.Content("~/assets/js/greensock.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
+        <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/bootstrap.min.js")"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"
+                asp-fallback-test="window.jQuery && window.jQuery.fancybox">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        @*<script src="@Url.Content("~/assets/js/owl.js")"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.0.1/wow.js"
+                integrity="sha512-i7UvGhblduM2dn6IldbSPQ0NzG4Ib18cUYsCiCI4qxXrKY0yvXQXbPgP14tT0ROlAbx3wMqHXN4vVFMxJIK48A==" crossorigin="anonymous"
+                asp-fallback-test="WOW"
+                asp-fallback-src="@Url.Content("~/assets/js/wow.js")"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+                asp-fallback-test="mixitup"
+                asp-fallback-src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/validate.js")"></script>
+        <script src="@Url.Content("~/assets/js/custom.min.js")"></script>
+    </environment>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

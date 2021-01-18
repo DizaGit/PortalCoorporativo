@@ -751,7 +751,7 @@ a.text-dark:focus {
 .vertical-timeline::before {
 	position: absolute;
 	content: "\f111";
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 5 Pro";
 	left: 60px;
 	top: 0px;
 	font-size: 12px;
@@ -1383,7 +1383,7 @@ form label {
 .service-widget-2 ul li::after {
 	position: absolute;
 	content: "\f105";
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 5 Pro";
 	font-size: 15px;
 	font-weight: 600;
 	right: 20px;
@@ -2939,7 +2939,7 @@ table.cart td.actions {
     height: 45px;
     position: relative;
     border: 1px solid var(--theme-general-color) !important;
-    font-family: "Font Awesome 5 Free" !important;
+    font-family: "Font Awesome 5 Pro" !important;
     font-weight: 900 !important;
 }
 .testimonial-classic .owl-nav button:first-child::before {
@@ -3495,7 +3495,7 @@ a.add_to_cart_button:hover,
 .list-style-tick li::before {
 	position: absolute;
 	content: "\f00c";
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 5 Pro";
 	font-weight: 600;
 	font-size: 10px;
 	left: 0;
@@ -4164,7 +4164,7 @@ header.fixed-top .top-header,
 	transform: translateY(-50%);
 	position: absolute;
 	content: "\f105";
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 5 Pro";
 	font-weight: 600;
 	font-size: 10px;
 	top: 50%;

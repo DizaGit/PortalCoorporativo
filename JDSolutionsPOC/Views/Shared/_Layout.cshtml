@@ -22,17 +22,48 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&display=swap" rel="stylesheet">
 
     <!--  CSS Style -->
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/animate.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/owl.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/general-styles.css")">
+    <environment include="Development">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/general-styles.css")">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-fallback-href="@Url.Content("~/assets/css/bootstrap.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome-all-5.15.1.min.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css"
+              asp-fallback-test-class="animated"
+              asp-fallback-test-property="animation-fill-mode"
+              asp-fallback-test-value="both"
+              asp-fallback-href="@Url.Content("~/assets/css/animate.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/webfonts/flaticon/flaticon.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+              asp-fallback-test-class="owl-item"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="relative"
+              asp-fallback-href="@Url.Content("~/assets/css/owl.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+              asp-fallback-test-class="fancybox-active"
+              asp-fallback-test-property="height"
+              asp-fallback-test-value="auto"
+              asp-fallback-href="@Url.Content("~/assets/css/jquery.fancybox.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/layerslider.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/template.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/category/default.css")">
+        <link rel="stylesheet" href="@Url.Content("~/assets/css/style.min.css")">
+    </environment>
 </head>
 <body>
     <header class="transparent-header nav-on-banner">
@@ -41,7 +72,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg nav-white nav-primary-hover nav-down-line-active py-2">
-                            <a class="navbar-brand" href="#"><img class="nav-logo" src="images/jd_solutions_white_logo.png" alt="Image not found !"></a>
+                            <a class="navbar-brand" href="#"><img class="nav-logo" src="@Url.Content("~/images/jd_solutions_white_logo.png")" alt="Image not found !"></a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
                             </button>
@@ -87,7 +118,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget mb-5">
                         <div class="footer-logo mb-4">
-                            <img src="images/jd_solutions_logo.png" alt="JD Solutions" width="170px" />
+                            <img src="@Url.Content("~/images/jd_solutions_logo.png")" alt="JD Solutions" width="170px" />
                         </div>
                         <p>Somos una empresa mexicana creada por un equipo de profesionales con 8 años de experiencia en el desarrollo de software. Desarrollamos aplicaciones web y sistemas; ofrecemos consultoría informática a la medida.</p>
                         <a asp-controller="Contact" asp-action="Index" class="btn btn-primary mt-4">Contáctanos</a>
@@ -150,18 +181,49 @@
     <a href="#" class="bg-primary text-white" id="scroll"><i class="fa fa-angle-up"></i></a>
     <!-- End Scroll To top -->
     <!--===============================================================================================-->
-    <script src="@Url.Content("~/assets/js/jquery.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/greensock.js")"></script>
-    <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
-    <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
-    <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/owl.js")"></script>
-    <script src="@Url.Content("~/assets/js/wow.js")"></script>
-    <script src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
-    <script src="@Url.Content("~/assets/js/custom.js")"></script>
-
+    <environment include="Development">
+        <script src="@Url.Content("~/assets/js/jquery.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/greensock.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
+        <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/owl.js")"></script>
+        <script src="@Url.Content("~/assets/js/wow.js")"></script>
+        <script src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/validate.js")"></script>
+        <script src="@Url.Content("~/assets/js/custom.js")"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/jquery.min.js")"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="@Url.Content("~/assets/js/greensock.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.transitions.js")"></script>
+        <script src="@Url.Content("~/assets/js/layerslider.kreaturamedia.jquery.js")"></script>
+        <script src="@Url.Content("~/assets/js/popper.min.js")"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/bootstrap.min.js")"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
+                asp-fallback-src="@Url.Content("~/assets/js/jquery.fancybox.min.js")"
+                asp-fallback-test="window.jQuery && window.jQuery.fancybox">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        @*<script src="@Url.Content("~/assets/js/owl.js")"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.0.1/wow.js"
+                integrity="sha512-i7UvGhblduM2dn6IldbSPQ0NzG4Ib18cUYsCiCI4qxXrKY0yvXQXbPgP14tT0ROlAbx3wMqHXN4vVFMxJIK48A==" crossorigin="anonymous"
+                asp-fallback-test="WOW"
+                asp-fallback-src="@Url.Content("~/assets/js/wow.js")"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+                asp-fallback-test="mixitup"
+                asp-fallback-src="@Url.Content("~/assets/js/mixitup.min.js")"></script>
+        <script src="@Url.Content("~/assets/js/validate.js")"></script>
+        <script src="@Url.Content("~/assets/js/custom.min.js")"></script>
+    </environment>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

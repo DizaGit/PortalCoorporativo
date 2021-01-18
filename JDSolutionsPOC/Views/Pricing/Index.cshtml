@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_Layout2";
 }
-<div class="full-row page-banner-image" style="background-image: url(images/banners/b_abstract02.jpg); background-position: center center; background-size: cover">
+<div class="full-row page-banner-image" style="background-image: url(@Url.Content(@"~/images/banners/b_abstract02.jpg")); background-position: center center; background-size: cover">
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-12">
@@ -22,7 +22,7 @@
             <div class="col-lg-6 col-md-6">
                 <nav aria-label="breadcrumb" class="float-right">
                     <ol class="breadcrumb mb-0 bg-transparent p-0">
-                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Inicio</a></li>
                         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" asp-fragment="jdmodelos">Modelos de trabajo</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Modelos de precios</li>
                     </ol>
@@ -56,33 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="sidebar page-sidebar">
-                    <div class="widget widget-email bg-gray">
-                        <h4 class="widget-title mb-3">Escríbenos</h4>
-                        <span>Envía un mensaje a nuestros expertos para obtener una asesoría o más detalles acerca de nuestros servicios o alguno de nuestros productos.<br /></span>
-                        <form action="#" method="post" class="mt-3">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control bg-white" placeholder="Nombre" value="" required>
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="email" class="form-control bg-white" placeholder="Correo electrónico" value="" required>
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control bg-white" placeholder="Título" value="" required>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control bg-white" rows="5" placeholder="Mensaje"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <partial name="~/Views/Contact/ContactPartial.cshtml" />
         </div>
     </div>
 </div>

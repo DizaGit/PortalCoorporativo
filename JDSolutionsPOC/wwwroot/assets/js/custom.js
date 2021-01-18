@@ -167,18 +167,30 @@
 	
 	// Auto active class adding with navigation
     $window.on('load', function () {
-        var current = location.pathname;
-        var $path = current.substring(current.lastIndexOf('/') + 1);
-        $('#navbarSupportedContent li a').each(function (e) {
-            var $this = $(this);
-            // if the current path is like this link, make it active
-            if ($path == $this.attr('href')) {
-                $this.parent('li').addClass('active');
-            } 
-			else if ($path == '') {
-                $('.navbar-nav li:first-child').addClass('active');
-            }
-        })
+        const current = location.pathname;
+		//var $path = current.substring(current.lastIndexOf('/') + 1);
+		if (current.includes('servicios')) {
+			$("#liServices").addClass('active');
+		}
+		else if (current.includes('modelosdetrabajo')) {
+			$("#liModels").addClass('active');
+		}
+		else if (current.includes('productos')) {
+			$("#liProducts").addClass('active');
+		}
+		else if (current.includes('nosotros')) {
+			$("#liUs").addClass('active');
+		}
+   //     $('#navbarSupportedContent li a').each(function (e) {
+   //         var $this = $(this);
+   //         // if the current path is like this link, make it active
+   ////         if ($path == $this.attr('href')) {
+   ////             $this.parent('li').addClass('active');
+   ////         } 
+			////else if ($path == '') {
+   ////             $('.navbar-nav li:first-child').addClass('active');
+   ////         }
+   //     })
     });
 
 	
@@ -594,7 +606,7 @@
 	if($contact.length){
 		$contact.validate({  //#contact-form contact form id
 			rules: {
-				name: {
+				firstname: {
 					required: true    // Field name here
 				},
 				email: {
@@ -610,31 +622,34 @@
 			},
 			
 			messages: {
-                name: "Por favor ingrese su nombre", //Write here your error message that you want to show in contact form
-                email: "Por favor ingrese un email valido", //Write here your error message that you want to show in contact form
-                subject: "Por favor ingrese un sujeto", //Write here your error message that you want to show in contact form
-				message: "Por favor ingrese el mensaje" //Write here your error message that you want to show in contact form
+                firstname: "Please enter your First Name", //Write here your error message that you want to show in contact form
+                email: "Please enter valid Email", //Write here your error message that you want to show in contact form
+                subject: "Please enter your Subject", //Write here your error message that you want to show in contact form
+				message: "Please write your Message" //Write here your error message that you want to show in contact form
             },
 
             submitHandler: function (form) {
-				//$('#send').attr({ 'disabled': 'true', 'value': 'Sending...' });
-				const initialUrl = $("#hfSiteURL").val();
-				const url = `${initialUrl}contacto/enviar`;
-				const formData = new FormData(form);
-				fetch(url, {
-					method: 'POST',
-					body: formData
-				})
-				.then(response => response.json())
-				.then(data => {
-					if (data.StatusCode === 0) {
-						$("#enviado").show()
-					}
-					else {
-						$("#error").show();
-					}
-				})
-				.catch(err => $("#no-enviado").show());
+                $('#send').attr({'disabled' : 'true', 'value' : 'Sending...' });
+                $.ajax({
+                    type: "POST",
+                    url: "email.php",
+                    data: $(form).serialize(),
+                    success: function () {
+                        $('#send').removeAttr('disabled').attr('value', 'Send');
+                        $( "#success").slideDown( "slow" );
+                        setTimeout(function() {
+                        $( "#success").slideUp( "slow" );
+                        }, 5000);
+                        form.reset();
+                    },
+                    error: function() {
+                        $('#send').removeAttr('disabled').attr('value', 'Send');
+                        $( "#error").slideDown( "slow" );
+                        setTimeout(function() {
+                        $( "#error").slideUp( "slow" );
+                        }, 5000);
+                    }
+                });
                 return false; // required to block normal submit since you used ajax
             }
 

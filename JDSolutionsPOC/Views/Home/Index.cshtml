@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 @section Scripts {
     <script>
@@ -120,7 +120,7 @@
             <div class="row wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
                 <div class="col-lg-4 col-md-4">
                     <div class="mb-5 text-gray xs-text-center">
-                        <img class="mb-2" src="images/iconos/i_modelo01.png" alt="">
+                        <img class="mb-2" src="@Url.Content("~/images/iconos/i_modelo01.png")" alt="">
                         <h5 class="mb-3 text-white">Modelo de outsourcing</h5>
                         <p>Tenemos los talentos técnicos, de análisis y de planeación para llevar a cabo con transparencia los proyectos de nuestros clientes.</p>
                         <p><b>Modelos de precio recomendados:</b> Time &amp; Material y Fixed Price </p>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="mb-5 text-gray xs-text-center">
-                        <img class="mb-2" src="images/iconos/i_modelo02.png" alt="">
+                        <img class="mb-2" src="@Url.Content("~/images/iconos/i_modelo02.png")" alt="">
                         <h5 class="mb-3 text-white">Modelo Team Extension (TEM)</h5>
                         <p>Uno o varios de nuestro equipo de especialistas se vuelven parte del equipo de nuestros clientes y trabajan directamente con ellos.</p>
                         <p><b>Modelos de precio recomendados:</b> Fixed Price y Monthly Retainer</p>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="mb-5 text-gray xs-text-center">
-                        <img class="mb-2" src="images/iconos/i_modelo03.png" alt="">
+                        <img class="mb-2" src="@Url.Content("~/images/iconos/i_modelo03.png")" alt="">
                         <h5 class="mb-3 text-white">Modelo Dedicated Development Team</h5>
                         <p>El cliente puede completar su equipo de expertos para un proyecto en específico contratando a uno de nuestros especialistas –a mediano o largo plazo–.</p>
                         <p><b>Modelo de precio recomendado:</b> Monthly Retainer</p>
@@ -163,7 +163,7 @@
             </div>
             <div class="row mb-5">
                 <div class="col-lg-5 wow fadeIn" data-wow-delay="200ms" data-wow-duration="1000ms">
-                    <div class="intro-video mt-md-30" style="background: url(images/productos/pr_bluehouse.jpg) no-repeat 100%/100%;"></div>
+                    <div class="intro-video mt-md-30" style="background: url(@Url.Content("~/images/productos/pr_bluehouse.jpg")) no-repeat 100%/100%;"></div>
                 </div>
                 <div class="col-lg-7 wow fadeIn" data-wow-delay="100ms" data-wow-duration="1000ms">
                     <!--<h2 class="down-line mb-30">Blue House</h2>-->
@@ -211,9 +211,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_ara01.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_ara01.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_ara01.jpg" data-fancybox="gallery" data-caption="Portal de recepción de facturas. Cliente: Aranet"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_ara01.jpg")" data-fancybox="gallery" data-caption="Portal de recepción de facturas. Cliente: Aranet"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -228,9 +228,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_casamax01.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_casamax01.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_casamax01.jpg" data-fancybox="gallery" data-caption="CRM / Intranet y página web. Cliente: Casamax"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_casamax01.jpg")" data-fancybox="gallery" data-caption="CRM / Intranet y página web. Cliente: Casamax"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -245,9 +245,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_stesting.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_stesting.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_stesting.jpg" data-fancybox="gallery" data-caption="Test Case Management Software"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_stesting.jpg")" data-fancybox="gallery" data-caption="Test Case Management Software"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -262,9 +262,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_skyrocket01.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_skyrocket01.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_skyrocket01.jpg" data-fancybox="gallery" data-caption="Juego didáctico para tabletas. Cliente: Skyrocket"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_skyrocket01.jpg")" data-fancybox="gallery" data-caption="Juego didáctico para tabletas. Cliente: Skyrocket"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -279,9 +279,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_sushiroll01.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_sushiroll01.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_sushiroll01.jpg" data-fancybox="gallery" data-caption="Aplicación Web - Intranet. Cliente: Sushi Roll"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_sushiroll01.jpg")" data-fancybox="gallery" data-caption="Aplicación Web - Intranet. Cliente: Sushi Roll"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -296,9 +296,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_unam01.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_unam01.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_unam01.jpg" data-fancybox="gallery" data-caption="Aplicación Web. Cliente: UNAM"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_unam01.jpg")" data-fancybox="gallery" data-caption="Aplicación Web. Cliente: UNAM"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
@@ -313,9 +313,9 @@
                             <div class="item">
                                 <div class="portfolio-classic">
                                     <div class="portfolio-img overflow-hidden position-relative">
-                                        <img class="transation" src="images/proyectos/p_unam02.jpg" alt="Image not found!">
+                                        <img class="transation" src="@Url.Content("~/images/proyectos/p_unam02.jpg")" alt="Image not found!">
                                         <div class="portfolio-hover transation bg-primary">
-                                            <a class="portfolio-view" href="images/proyectos/p_unam02.jpg" data-fancybox="gallery" data-caption="Aplicación web para publicaciones literarias. Cliente: UNAM"><i class="flaticon-search flat-mini text-white"></i></a>
+                                            <a class="portfolio-view" href="@Url.Content("~/images/proyectos/p_unam02.jpg")" data-fancybox="gallery" data-caption="Aplicación web para publicaciones literarias. Cliente: UNAM"><i class="flaticon-search flat-mini text-white"></i></a>
                                         </div>
                                     </div>
                                     <div class="portfolio-info mt-3">
