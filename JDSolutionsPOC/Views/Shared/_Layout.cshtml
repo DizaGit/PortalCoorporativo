@@ -72,26 +72,49 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg nav-white nav-primary-hover nav-down-line-active py-2">
-                            <a class="navbar-brand" href="#"><img class="nav-logo" src="@Url.Content("~/images/jd_solutions_white_logo.png")" alt="Image not found !"></a>
+                            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img class="nav-logo" src="@Url.Content("~/images/jd_solutions_white_logo.png")" alt="Image not found !"></a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
                             </button>
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#jdservicios">Servicios</a>
+                                    <li id="liServices" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdservicios">Servicios</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var group in services.Value.Services.GroupBy(s => s.groupid))
+                                            {
+                                                string groupName = group.First().group;
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle dropdown-item" asp-controller="Services" asp-action="GroupBy" asp-route-groupId="@group.Key">@groupName</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach (Service service in group)
+                                                        {
+                                                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail" asp-route-serviceId="@service.id">@service.fullname</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#jdmodelos">Modelos de trabajo</a>
+                                    <li id="liModels" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdmodelos">Modelos de trabajo</a>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#jdproductos">Productos</a>
+                                    <li id="liProducts" class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproductos">Productos</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown">
+                                                <a class="dropdown-item" asp-controller="Products" asp-action="BlueHouse">BLUE House</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item" asp-controller="Products" asp-action="PACFE">PACFE</a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class="nav-item dropdown mega-dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#jdproyectos">Proyectos</a>
+                                    <li id="liProjects" class="nav-item dropdown mega-dropdown">
+                                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Index" asp-fragment="jdproyectos">Proyectos</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+                                    <li id="liUs" class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" asp-controller="AboutUs" asp-action="Index">Nosotros</a>
                                     </li>
                                 </ul>
@@ -128,7 +151,7 @@
                     <div class="footer-widget post-widget mb-5">
                         <h3 class="widget-title mb-4">Nuestros productos</h3>
                         <ul>
-                            <li><a asp-controller="Products" asp-action="Bluehouse">Acerca de BLUE House</a></li>
+                            <li><a asp-controller="Products" asp-action="BlueHouse">Acerca de BLUE House</a></li>
                             <li><a asp-controller="Products" asp-action="PACFE">Acerca de PACFE</a></li>
                         </ul>
                     </div>
@@ -137,10 +160,13 @@
                     <div class="footer-widget footer-nav mb-5">
                         <h3 class="widget-title mb-4">Servicios</h3>
                         <ul>
-                            <li><a asp-controller="Services" asp-action="GroupBy" asp-route-groupId="aplicaciones-de-negocio">Aplicaciones de negocio</a></li>
-                            <li><a asp-controller="Services" asp-action="GroupBy" asp-route-groupId="integracion-de-sistemas">Integración de sistemas</a></li>
-                            <li><a asp-controller="Services" asp-action="GroupBy" asp-route-groupId="advanced-tech">Advanced Tech </a></li>
-                            <li><a asp-controller="Services" asp-action="GroupBy" asp-route-groupId="servicios-profesionales">Servicios profesionales</a></li>
+                            @{
+                                var groups = services.Value.Services.GroupBy(g => new { g.groupid, g.group });
+                            }
+                            @foreach (var group in groups)
+                            {
+                                <li><a asp-controller="Services" asp-action="GroupBy" asp-route-groupId="@group.Key.groupid">@group.Key.group</a></li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -163,11 +189,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>©2020 JD Solutions SA de CV. Todos los derechos reservados.</span>
+                    <span>©@DateTime.Now.Year JD Solutions SA de CV. Todos los derechos reservados.</span>
                 </div>
                 <div class="col-md-6">
                     <ul class="line-menu float-right list-color-gray">
-                        <li class="float-left"><a href="#">Política de privacidad </a></li>
+                        <li class="float-left"><a href="@Url.Content("~/Aviso-de-privacidad.pdf")">Política de privacidad </a></li>
                         <!--<li class="float-left">|</li>
                         <li class="float-left"><a href="#">Site Map</a></li>-->
                     </ul>
@@ -224,6 +250,7 @@
         <script src="@Url.Content("~/assets/js/validate.js")"></script>
         <script src="@Url.Content("~/assets/js/custom.min.js")"></script>
     </environment>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
