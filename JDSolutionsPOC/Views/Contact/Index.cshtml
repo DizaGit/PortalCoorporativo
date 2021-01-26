@@ -13,8 +13,6 @@
             $("#contact-form").submit(function (e) {
                 e.preventDefault();
                 $(".message-result").hide();
-                const contactFormData = new FormData("#contact-form");
-                
             });
         })(jQuery);
     </script>
@@ -51,19 +49,19 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label>Nombre:</label>
-                                <input type="text" class="form-control bg-gray" name="name" required="">
+                                <input type="text" class="form-control bg-gray" name="name" required="" maxlength="100">
                             </div>
                             <div class="col-md-6">
                                 <label>Correo electrónico:</label>
-                                <input type="email" class="form-control bg-gray" name="email" required="">
+                                <input type="email" class="form-control bg-gray" name="email" required="" maxlength="50">
                             </div>
                             <div class="col-md-12">
                                 <label>Título:</label>
-                                <input type="text" class="form-control bg-gray" name="subject" required="">
+                                <input type="text" class="form-control bg-gray" name="subject" required="" maxlength="100">
                             </div>
                             <div class="col-md-12">
                                 <label>Mensaje:</label>
-                                <textarea class="form-control bg-gray" name="message" rows="8" required=""></textarea>
+                                <textarea class="form-control bg-gray" name="message" rows="8" required="" maxlength="500"></textarea>
                             </div>
                             <div class="col-md-12">
                                 <button class="btn btn-primary" name="submit" type="submit">Enviar mensaje</button>

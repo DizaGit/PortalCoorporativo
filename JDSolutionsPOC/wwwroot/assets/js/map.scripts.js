@@ -3,7 +3,8 @@
 
 function init(_latitude, _longitude) {
 	var mapOptions = {
-		zoom: 6,
+		zoom: 14,
+		disableDefaultUI: true,
 		center: new google.maps.LatLng(_latitude, _longitude), // New York
 		styles: [
 					{

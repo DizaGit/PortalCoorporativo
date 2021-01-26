@@ -623,7 +623,7 @@
 
 			messages: {
 				name: "Por favor ingrese su nombre", //Write here your error message that you want to show in contact form
-				email: "Por favor ingrese un email valido", //Write here your error message that you want to show in contact form
+				email: "Por favor ingrese un correo electrónico válido", //Write here your error message that you want to show in contact form
 				subject: "Por favor ingrese un sujeto", //Write here your error message that you want to show in contact form
 				message: "Por favor ingrese el mensaje" //Write here your error message that you want to show in contact form
 			},
@@ -639,7 +639,7 @@
 				})
 					.then(response => response.json())
 					.then(data => {
-						if (data.StatusCode === 0) {
+						if (data.statusCode === 0) {
 							$("#enviado").show()
 						}
 						else {

@@ -101,3 +101,6 @@ h6, .h6 {
 	z-index: 100;
 	position: relative
 }
+.error{
+	color:red;
+}
