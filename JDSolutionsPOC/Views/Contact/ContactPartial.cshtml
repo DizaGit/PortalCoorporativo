@@ -18,19 +18,24 @@
             <form id="contact-form">
                 <div class="form-row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control bg-white" placeholder="Nombre" name="name" maxlength="100">
+                        <input type="text" class="form-control bg-white contact-input" placeholder="Nombre" name="name" maxlength="100">
                     </div>
                     <div class="col-md-12">
-                        <input type="email" class="form-control bg-white" placeholder="Correo electrónico" name="email" maxlength="50">
+                        <input type="email" class="form-control bg-white contact-input" placeholder="Correo electrónico" name="email" maxlength="50">
                     </div>
                     <div class="col-md-12">
-                        <input type="text" class="form-control bg-white" placeholder="Título" name="subject" maxlength="100">
+                        <input type="text" class="form-control bg-white contact-input" placeholder="Título" name="subject" maxlength="100">
                     </div>
                     <div class="col-md-12">
-                        <textarea class="form-control bg-white" rows="5" placeholder="Mensaje" name="message" maxlength="500"></textarea>
+                        <textarea class="form-control bg-white contact-input" rows="5" placeholder="Mensaje" name="message" maxlength="2000"></textarea>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button id="btnSend" type="submit" class="btn btn-primary">
+                            <span>Enviar</span>
+                            <div id="divLoading" class="spinner-border spinner-border-sm ml-10" style="display:none" role="status">
+                                <span class="sr-only">Enviando...</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </form>

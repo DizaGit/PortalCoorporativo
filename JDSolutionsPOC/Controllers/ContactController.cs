@@ -1,7 +1,9 @@
-﻿using JDInvoiceManager.Helper.CurrentSystem;
+﻿using JDInvoiceManager.Helper.Configuration;
+using JDInvoiceManager.Helper.CurrentSystem;
 using JDInvoiceManager.Helper.Email;
 using JDSolutionsPOC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,9 @@ namespace JDSolutionsPOC.Controllers
             return View();
         }
         [HttpPost("contacto/enviar")]
-        public IActionResult SendMail([FromForm]ContactFormData data)
+        public IActionResult SendMail([FromForm]ContactFormData data, [FromServices]IOptionsSnapshot<AppsettingsConfiguration> config)
         {
-            ResponseGeneric r = _sender.SendMail("disa@jdsolutions.com.mx", "Contacto", data.subject, $"{data.email} - {data.message}");
+            ResponseGeneric r = _sender.SendMail(config.Value.MassiveInvoiceDownload.MaxFilesMail, "Contacto", data.subject, $"{data.name} - {data.email} - {data.message}");
             return Json(r);
         }
         public IActionResult ContactPartial()

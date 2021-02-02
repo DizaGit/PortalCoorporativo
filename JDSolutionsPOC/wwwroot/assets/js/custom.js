@@ -1,4 +1,4 @@
-(function($) {
+ï»¿(function($) {
 	
 	'use strict';
 	
@@ -623,30 +623,42 @@
 
 			messages: {
 				name: "Por favor ingrese su nombre", //Write here your error message that you want to show in contact form
-				email: "Por favor ingrese un correo electrónico válido", //Write here your error message that you want to show in contact form
+				email: "Por favor ingrese un correo electrÃ³nico vÃ¡lido", //Write here your error message that you want to show in contact form
 				subject: "Por favor ingrese un sujeto", //Write here your error message that you want to show in contact form
 				message: "Por favor ingrese el mensaje" //Write here your error message that you want to show in contact form
 			},
 
 			submitHandler: function (form) {
 				//$('#send').attr({ 'disabled': 'true', 'value': 'Sending...' });
+				$('#btnSend').prop('disabled', true);
 				const initialUrl = $("#hfSiteURL").val();
 				const url = `${initialUrl}contacto/enviar`;
 				const formData = new FormData(form);
+				$("#divLoading").show();
+				$("#spanSendMessage").hide();
 				fetch(url, {
 					method: 'POST',
 					body: formData
 				})
-					.then(response => response.json())
-					.then(data => {
-						if (data.statusCode === 0) {
-							$("#enviado").show()
-						}
-						else {
-							$("#error").show();
-						}
-					})
-					.catch(err => $("#no-enviado").show());
+				.then(response => response.json())
+				.then(data => {
+					$('.contact-input').val('');
+					$("#divLoading").hide();
+					$("#spanSendMessage").show();
+					$('#btnSend').prop('disabled', false);
+					if (data.statusCode === 0) {
+						$("#enviado").show()
+					}
+					else {
+						$("#error").show();
+					}
+				})
+				.catch(err => {
+					$("#no-enviado").show();
+					$("#divLoading").hide();
+					$("#spanSendMessage").show();
+					$('#btnSend').prop('disabled', false);
+				});
 				return false; // required to block normal submit since you used ajax
 			}
 
