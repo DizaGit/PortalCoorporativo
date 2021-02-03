@@ -1,4 +1,4 @@
-(function($) {
+﻿(function($) {
 	
 	'use strict';
 	
@@ -603,10 +603,10 @@
 	
 	
 	// Contact Form Validation
-	if($contact.length){
+	if ($contact.length) {
 		$contact.validate({  //#contact-form contact form id
 			rules: {
-				firstname: {
+				name: {
 					required: true    // Field name here
 				},
 				email: {
@@ -620,38 +620,47 @@
 					required: true
 				}
 			},
-			
-			messages: {
-                firstname: "Please enter your First Name", //Write here your error message that you want to show in contact form
-                email: "Please enter valid Email", //Write here your error message that you want to show in contact form
-                subject: "Please enter your Subject", //Write here your error message that you want to show in contact form
-				message: "Please write your Message" //Write here your error message that you want to show in contact form
-            },
 
-            submitHandler: function (form) {
-                $('#send').attr({'disabled' : 'true', 'value' : 'Sending...' });
-                $.ajax({
-                    type: "POST",
-                    url: "email.php",
-                    data: $(form).serialize(),
-                    success: function () {
-                        $('#send').removeAttr('disabled').attr('value', 'Send');
-                        $( "#success").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#success").slideUp( "slow" );
-                        }, 5000);
-                        form.reset();
-                    },
-                    error: function() {
-                        $('#send').removeAttr('disabled').attr('value', 'Send');
-                        $( "#error").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#error").slideUp( "slow" );
-                        }, 5000);
-                    }
-                });
-                return false; // required to block normal submit since you used ajax
-            }
+			messages: {
+				name: "Por favor ingrese su nombre", //Write here your error message that you want to show in contact form
+				email: "Por favor ingrese un correo electrónico válido", //Write here your error message that you want to show in contact form
+				subject: "Por favor ingrese un sujeto", //Write here your error message that you want to show in contact form
+				message: "Por favor ingrese el mensaje" //Write here your error message that you want to show in contact form
+			},
+
+			submitHandler: function (form) {
+				//$('#send').attr({ 'disabled': 'true', 'value': 'Sending...' });
+				$('#btnSend').prop('disabled', true);
+				const initialUrl = $("#hfSiteURL").val();
+				const url = `${initialUrl}contacto/enviar`;
+				const formData = new FormData(form);
+				$("#divLoading").show();
+				$("#spanSendMessage").hide();
+				fetch(url, {
+					method: 'POST',
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					$('.contact-input').val('');
+					$("#divLoading").hide();
+					$("#spanSendMessage").show();
+					$('#btnSend').prop('disabled', false);
+					if (data.statusCode === 0) {
+						$("#enviado").show()
+					}
+					else {
+						$("#error").show();
+					}
+				})
+				.catch(err => {
+					$("#no-enviado").show();
+					$("#divLoading").hide();
+					$("#spanSendMessage").show();
+					$('#btnSend').prop('disabled', false);
+				});
+				return false; // required to block normal submit since you used ajax
+			}
 
 		});
 	}
