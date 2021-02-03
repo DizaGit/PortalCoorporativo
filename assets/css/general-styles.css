@@ -60,4 +60,8 @@
 	color: #9e4242;
 	text-decoration: underline;
 }
-
+@media screen and (max-width:767px) {
+	.jd-img-modelo {
+		width: 40% !important;
+	}
+}
